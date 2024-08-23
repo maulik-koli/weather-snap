@@ -1,5 +1,8 @@
 const express = require('express')
 const cors = require('cors')
+const geocode = require('./utils/geocode.js')
+const weathercode = require('./utils/weathercode.js')
+
 const app = express()
 
 app.use(cors())
@@ -10,8 +13,27 @@ app.get('/', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
-    const { address } = req.query.address
-    res.send("haiii okay")
+    if(!req.query.location){
+        return res.send({
+            error: "Requested address don't match"
+        })
+    }
+
+    // const location = req.query.location
+
+    // geocode(location, (error, { longitude , latitude, place } = {}) => {
+    //     if(error){
+    //         return res.send({ error: error })
+    //     }
+
+    //     weathercode(longitude, latitude, (error, weatherData = {}) => {
+    //         if(error){
+    //             return res.send({ error: error })
+    //         }
+    
+    //         res.status(200).send(weatherData)
+    //     })
+    // })
 })
 
 app.get('/test', (req, res) => {

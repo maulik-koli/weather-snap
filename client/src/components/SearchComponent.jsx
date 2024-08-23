@@ -1,14 +1,49 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 const SearchComponent = () => {
-    const cityInout = useRef() 
-    const [city, setCity] = useState('')
+    const locationInout = useRef() 
+    const [location, setLocation] = useState('')
+    
+    const [weatherForcast, setWeatheForcast] = useState(null)
+    const [error, setError] = useState(null)
+    
+    const handleSearchClick = () => {
+        setLocation(locationInout.current.value)
+    }
+
+    useEffect(() => {
+        const sendLocation = async () => {
+            try{
+                const response = await fetch(`http://localhost:3000/weather?location=${location}`)
+                const data = await response.json()
+                
+                if(!response.ok){
+                    throw new Error("Failed to fetch data.")
+                }
+    
+                setWeatheForcast(data)
+            }
+            catch(error){
+                setError({
+                    message: error.message || "Could not fetch places, pleace try again latter."
+                })
+            }
+        }
+        sendLocation()
+    }, [location])
 
     return (
         <div className='search'>
-            <input ref={cityInout} type='text' placeholder='Enter city name' onChange={() =>  setCity(cityInout.current.value)}/>
+            <input 
+                ref={locationInout}
+                type='text'
+                placeholder='Enter city name'
+            />
+            <button id='search-btn' onClick={handleSearchClick}>Search</button>
             <button>Fav</button>
             <button>Map</button>
+            {error && <p>{error.message}</p>}
+            {!error && weatherForcast && <p>{weatherForcast.currentData.temperature}</p>}
         </div>
     )
 }
