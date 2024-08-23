@@ -1,0 +1,60 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background-color: blueviolet;
+    height: 10vh;
+    display: flex;
+}
+
+.logo{
+    background-color: bisque;
+    width: 85vw;
+}
+
+span {
+    background-color: violet;
+    align-self: flex-end;
+    width: 12vw;
+    margin: auto;
+    height: 8vh;
+}
+
+.search{
+    background-color: red;
+    height: 12vh;
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+
+.search input{
+    height: 6vh;
+    width: 30vw;
+    margin: auto 0;
+    margin-left: 1rem;
+}
+
+.search button{
+    height: 6vh;
+    width: 5em;
+    margin: auto 0;
+}
+
+.weather-con{
+    display: flex;
+}
+
+.weather{
+    background-color: darkblue;
+    width: 60vw;
+    height: 78vh;
+}
+
+.side-con{
+    background-color: crimson;
+    width: 40vw;
+    height: 78vh;
+}
