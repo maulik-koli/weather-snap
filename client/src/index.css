@@ -143,12 +143,16 @@ span {
     margin: auto;
 }
 
-.side-con {
+.side-main {
     background-color: crimson;
     width: 40vw;
     height: 78vh;
+}
+
+.side-con {
+    width: 40vw;
+    height: 78vh;
     display: flex;
-    
 }
 
 .side-weather-data-m {

@@ -1,12 +1,14 @@
 import { useRef, useState, useEffect, useContext } from 'react'
 
-import { ErrorFetching } from '../contexts/ErrorAndFetching'
+import { ErrorFetchingContext } from '../contexts/ErrorAndFetching.jsx'
+import { WeatherContext } from '../contexts/WeatherProvider.jsx'
 
-const SearchComponent = ({ setForcast, lable, setLable }) => {
+const SearchComponent = ({ lable, setLable }) => {
     const locationInout = useRef() 
     const [location, setLocation] = useState('')
 
-    const { handleSetError, handleSetIsFetching } = useContext(ErrorFetching)
+    const { setWeatheForcast } = useContext(WeatherContext)
+    const { setError, setIsFetching } = useContext(ErrorFetchingContext)
     
     const handleSearchClick = () => {
         setLocation(locationInout.current.value)
@@ -15,7 +17,7 @@ const SearchComponent = ({ setForcast, lable, setLable }) => {
     }
 
     useEffect(() => {
-        handleSetIsFetching(true)
+        setIsFetching(true)
         const sendLocation = async () => {
             const wait = (delay) => new Promise(resolve => setTimeout(resolve, delay))
 
@@ -30,15 +32,15 @@ const SearchComponent = ({ setForcast, lable, setLable }) => {
                     throw new Error("Failed to fetch data.")
                 }
     
-                setForcast(data)
+                setWeatheForcast(data)
             }
             catch(error){
-                handleSetError({
+                setError({
                     message: error.message || "Could not fetch places, pleace try again latter."
                 })
             }
             finally{
-                handleSetIsFetching(false)
+                setIsFetching(false)
             }
         }
         sendLocation()
