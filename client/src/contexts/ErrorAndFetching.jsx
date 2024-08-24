@@ -10,8 +10,8 @@ export const ErrorAndFetching = ({ children }) => {
         setError(error)
     }
 
-    const handleSetIsFetching = () => {
-        setIsFetching((prevFetch) => !prevFetch)
+    const handleSetIsFetching = (bool) => {
+        setIsFetching(bool)
     }
 
     return (

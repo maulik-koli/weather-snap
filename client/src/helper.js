@@ -24,13 +24,13 @@ export const INITIAL_WEATHER_DATA = {
 
 export const formateTime = (time) => {
     const date = new Date(time * 1000)
-    const h = date.getHours()
-    const m = date.getHours()
-    const ampm = hours >= 12 ? 'PM' : 'AM'
+    let h = date.getHours()
+    let m = date.getHours()
+    let ampm = h >= 12 ? 'PM' : 'AM'
 
     h %= 12
     h = h ? h : 12;
-    const min = m < 10 ? '0' + m : m
+    let min = m < 10 ? '0' + m : m
 
     return `${h} : ${min} ${ampm}`
 }
