@@ -1,11 +1,10 @@
 import { useRef, useState, useEffect } from 'react'
 
-const SearchComponent = () => {
+const SearchComponent = ({ setForcast }) => {
     const locationInout = useRef() 
     const [location, setLocation] = useState('')
     
-    const [weatherForcast, setWeatheForcast] = useState(null)
-    const [error, setError] = useState(null)
+    
     
     const handleSearchClick = () => {
         setLocation(locationInout.current.value)
@@ -21,10 +20,10 @@ const SearchComponent = () => {
                     throw new Error("Failed to fetch data.")
                 }
     
-                setWeatheForcast(data)
+                setForcast(data)
             }
             catch(error){
-                setError({
+                setForcast({
                     message: error.message || "Could not fetch places, pleace try again latter."
                 })
             }
@@ -42,8 +41,6 @@ const SearchComponent = () => {
             <button id='search-btn' onClick={handleSearchClick}>Search</button>
             <button>Fav</button>
             <button>Map</button>
-            {error && <p>{error.message}</p>}
-            {!error && weatherForcast && <p>{weatherForcast.currentData.temperature}</p>}
         </div>
     )
 }

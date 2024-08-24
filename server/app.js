@@ -2,6 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const geocode = require('./utils/geocode.js')
 const weathercode = require('./utils/weathercode.js')
+const fs = require('fs')
+const { error } = require('console')
 
 const app = express()
 
@@ -12,15 +14,25 @@ app.get('/', (req, res) => {
     res.send("I am just aguy who is hero for fun")
 })
 
-app.get('/weather', (req, res) => {
+app.get('/weather', async (req, res) => {
     if(!req.query.location){
         return res.send({
             error: "Requested address don't match"
         })
     }
 
-    // const location = req.query.location
+    try{
+        const dummyData = await fs.readFileSync('./dummy-data.json')
+        const dd = JSON.parse(dummyData)
+        res.status(200).send(dd)
+    }
+    catch(e){
+        res.status(400).send({ error: "can not!!" })
+    }
 
+    
+    // const location = req.query.location
+    
     // geocode(location, (error, { longitude , latitude, place } = {}) => {
     //     if(error){
     //         return res.send({ error: error })
