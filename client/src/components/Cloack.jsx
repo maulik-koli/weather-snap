@@ -21,7 +21,7 @@ const Cloack = () => {
     }, [])
 
     return (
-        <span>{time}</span>
+        <span className='span-clock'>{time}</span>
     )
 }
 

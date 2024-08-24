@@ -26,7 +26,7 @@ header {
     margin: auto 10px;
 }
 
-span {
+.span-clock {
     background-color: violet;
     align-self: flex-end;
     width: 12vw;
@@ -100,7 +100,7 @@ span {
     height: 78vh;
     display: grid;
     grid-template-columns: 60% 40%;
-    grid-template-rows: 28% 28% 28% 16%;
+    grid-template-rows: 6% 27% 26% 26% 15%;
 }
 
 .weather-data {
@@ -113,31 +113,47 @@ span {
     align-items: center;
 }
 
+.fb-0 {
+    grid-column: 2/3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.fb-0 button {
+    margin-top: 1.5rem;
+    margin-right: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+}
+
 .cn-1 {
+    grid-row: 2/3;
     height: 8rem;
     width: 80%;
 }
 
 .te-2 {
-    grid-row: 2/3;
+    grid-row: 3/4;
     height: 8rem;
     width: 30%;
 }
 
 .de-3 {
-    grid-row: 3/4;
+    grid-row: 4/5;
     height: 7rem;
     width: 80%;
 }
 
 .ti-4 {
-    grid-row: 4/5;
+    grid-row: 5/6;
     height: 4rem;
     width: 80%;
 }
 
 .lo-5 {
-    grid-row: 2/4;
+    grid-row: 2/5;
     height: 15rem;
     width: 70%;
     margin: auto;
@@ -172,6 +188,16 @@ span {
     align-items: center;
     margin: auto;
     width: 12rem;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+ul li {
+    
 }
 
 .for-loading {

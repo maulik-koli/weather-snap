@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
+
+import { WeatherContext } from '../contexts/WeatherProvider'
 
 const FavLocation = () => {
-    const [data, setData] = useState(() => {
-        const savedData = localStorage.getItem('locData')
-        return savedData ? JSON.parse(savedData) : ''
-    })
-
-    useEffect(() => {
-        localStorage.setItem('locData', JSON.stringify(data))
-    }, [data])
+    const { favData } = useContext(WeatherContext)
 
     return (
-        <div>
-            {data.map((data, index) => (
-                <li key={index}>{data}</li>
+        <ul>
+            {favData.map((data, index) => (
+                <li key={data.favLocID + `${index}`}>
+                    <span>{data.name}</span>
+                    <p>{data.place}</p>
+                </li>
             ))}
-        </div>
+        </ul>
     )
 }
 

@@ -21,31 +21,31 @@ app.get('/weather', async (req, res) => {
         })
     }
 
-    try{
-        const dummyData = await fs.readFileSync('./dummy-data.json')
-        const dd = JSON.parse(dummyData)
-        res.status(200).send(dd)
-    }
-    catch(e){
-        res.status(400).send({ error: "can not!!" })
-    }
+    // try{
+    //     const dummyData = await fs.readFileSync('./dummy-data.json')
+    //     const dd = JSON.parse(dummyData)
+    //     res.status(200).send(dd)
+    // }
+    // catch(e){
+    //     res.status(400).send({ error: "can not!!" })
+    // }
 
     
-    // const location = req.query.location
+    const location = req.query.location
     
-    // geocode(location, (error, { longitude , latitude, place } = {}) => {
-    //     if(error){
-    //         return res.send({ error: error })
-    //     }
+    geocode(location, (error, { longitude , latitude, place } = {}) => {
+        if(error){
+            return res.send({ error: error })
+        }
 
-    //     weathercode(longitude, latitude, place, (error, weatherData = {}) => {
-    //         if(error){
-    //             return res.send({ error: error })
-    //         }
+        weathercode(longitude, latitude, place, (error, weatherData = {}) => {
+            if(error){
+                return res.send({ error: error })
+            }
     
-    //         res.status(200).send(weatherData)
-    //     })
-    // })
+            res.status(200).send(weatherData)
+        })
+    })
 })
 
 app.get('/test', (req, res) => {

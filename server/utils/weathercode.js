@@ -14,15 +14,17 @@ const weathercode = (longitude, latitude, place, callback) =>{
         else{
             weatherData = {
                 locationData : {
-                    region : body.location.region,
+                    name : body.location.name,
+                    latitude,
+                    longitude,
+                    place,
                     country : body.location.country,
-                    city : place
+                    time : body.location.localtime,
                 },
                 currentData : {
                     temperature : body.current.temperature,
                     descriptions :  body.current.weather_descriptions,
                     code : body.current.weather_code,
-                    observationTime : body.current.observation_time,
                     icons : body.current.weather_icons,
 
                     windSpeed :  body.current.wind_speed,

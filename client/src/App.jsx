@@ -16,7 +16,7 @@ const App = () => {
         <main>
           <SearchComponent lable={sideState} setLable={setSideState} />
           <div className='weather-con'>
-            <Weather />
+            <Weather setLable={setSideState} />
             <SideComponents lable={sideState} />
           </div>
         </main>

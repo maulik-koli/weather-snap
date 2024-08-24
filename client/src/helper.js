@@ -1,14 +1,16 @@
 export const INITIAL_WEATHER_DATA = {
     locationData : {
-      region : "",
-      country : "",
-      city : ""
+        name : "",
+        latitude : 0.0,
+        longitude: 0.0,
+        place : "",
+        country : "",
+        time : ""
     },
     currentData : {
         temperature : 0,
         descriptions :  "",
         code : 0,
-        observationTime : "",
         icons : "",
   
         windSpeed :  0,
