@@ -4,10 +4,9 @@ const SearchComponent = ({ setForcast }) => {
     const locationInout = useRef() 
     const [location, setLocation] = useState('')
     
-    
-    
     const handleSearchClick = () => {
         setLocation(locationInout.current.value)
+        locationInout.current.value = ''
     }
 
     useEffect(() => {

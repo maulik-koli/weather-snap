@@ -1,7 +1,8 @@
 {
     "locationData": {
         "region": "Tokyo",
-        "country": "Japan"
+        "country": "Japan",
+        "city" : "Tokyo Japan"
     },
     "currentData": {
         "temperature": 27,

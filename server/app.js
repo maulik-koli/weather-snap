@@ -38,7 +38,7 @@ app.get('/weather', async (req, res) => {
     //         return res.send({ error: error })
     //     }
 
-    //     weathercode(longitude, latitude, (error, weatherData = {}) => {
+    //     weathercode(longitude, latitude, place, (error, weatherData = {}) => {
     //         if(error){
     //             return res.send({ error: error })
     //         }
