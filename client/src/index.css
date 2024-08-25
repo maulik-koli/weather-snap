@@ -207,16 +207,17 @@ header {
     margin: auto;
     width: 12rem;
 }
- /* Fav Container */
 
+ /* Fav Container */
  .side-fav {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 40vw;
+    height: 78vh;
 }
 
 .side-fav ul {
     display: flex;
+    margin: 0 auto;
     flex-direction: column;
     list-style: none;
     margin-top: 2rem;
@@ -228,6 +229,7 @@ header {
     display: flex;
     height: 3rem;
     background-color: antiquewhite;
+    cursor: auto;
 }
 
 .fav-list div {
@@ -243,6 +245,50 @@ header {
     margin-left: .5rem;
 }
 
+/* Map Container */
+.map-wrapper {
+    position: relative;
+    width: 70%;
+    height: 70%;
+    margin: auto;
+}
+  
+.info-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+  
+.map-container {
+    width: 100%;
+    height: calc(100% - 40px);
+    position: absolute;
+    top: 40px;
+    left: 0;
+}
+  
+.map-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+  
+.map-button:hover {
+    background-color: #0056b3;
+}
+
 /* Loading Block */
 .loading {
     margin: auto;
@@ -251,3 +297,13 @@ header {
     height: 30%;
     width: 40%;
 }
+
+/* Error Block */
+.error {
+    margin: auto;
+    display: flex;
+    background-color: azure;
+    height: 30%;
+    width: 40%;
+}
+
