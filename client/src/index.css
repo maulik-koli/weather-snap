@@ -3,6 +3,13 @@
     margin: 0;
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
 /* Header */
 header {
     background-color: blueviolet;
@@ -94,6 +101,68 @@ header {
     align-items: center;
 }
 
+/* Conditinal div to complete search component */
+.alt-div {
+    background-color: red;
+    width: 40vw;
+}
+
+/* Landing container */
+.landing-container {
+    height: 78vh;
+    width: 100%;
+    background: linear-gradient(135deg, #001f3f, #003366);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    z-index: 1; /* Ensures the content is above other effects */
+}
+
+/* Text styling */
+.landing-container h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.landing-container p {
+    font-size: 1.2rem;
+}
+
+/* Sun effect */
+.sun {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffff00 40%, rgba(255, 255, 0, 0) 70%);
+    box-shadow: 0 0 40px rgba(255, 255, 0, 0.6);
+    animation: rotateSun 20s linear infinite;
+    top: 10%;
+    left: 10%;
+}
+
+
+@keyframes rotateSun {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes moveClouds {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(-100%) translateY(-100%);
+    }
+}
+
 /* Main Container */
 .weather-con {
     display: flex;
@@ -101,7 +170,7 @@ header {
 
 /* Left Side */
 .side-left {
-    background-color: darkblue;
+    background-color: rgb(33, 12, 171);
     width: 60vw;
     height: 78vh;
     display: flex;
@@ -306,4 +375,3 @@ header {
     height: 30%;
     width: 40%;
 }
-

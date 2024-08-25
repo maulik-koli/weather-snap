@@ -1,27 +1,32 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import Header from './components/Header.jsx'
 import SearchComponent from './components/SearchComponent.jsx'
 import Weather from './components/Weather.jsx'
 import SideComponents from './components/SideComponents.jsx'
-import { WeaTherProvider } from './contexts/WeatherProvider.jsx'
+import Home from './components/Home.jsx'
+import { WeatherContext } from './contexts/WeatherProvider.jsx'
+import { ErrorAndFetching } from './contexts/ErrorAndFetching.jsx'
 
 const App = () => {
+  const { location } = useContext(WeatherContext)
   const [sideState, setSideState] = useState('Weather Info')
 
   return (
-    <>
+    <ErrorAndFetching>
       <Header />
-      <WeaTherProvider>
         <main>
           <SearchComponent lable={sideState} setLable={setSideState} />
-          <div className='weather-con'>
-            <Weather setLable={setSideState} />
-            <SideComponents lable={sideState} />
-          </div>
+          {location === '' ? <Home />
+            :  (
+              <div className='weather-con'>
+                <Weather setLable={setSideState} />
+                <SideComponents lable={sideState} />
+              </div>
+            )
+          }
         </main>
-      </WeaTherProvider>
-    </>
+    </ErrorAndFetching>
   )
 }
 

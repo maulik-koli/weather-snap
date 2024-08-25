@@ -3,12 +3,12 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-import { ErrorAndFetching } from './contexts/ErrorAndFetching.jsx'
+import { WeaTherProvider } from './contexts/WeatherProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ErrorAndFetching>
+    <WeaTherProvider>
       <App />
-    </ErrorAndFetching>
+    </WeaTherProvider>
   </StrictMode>,
 )

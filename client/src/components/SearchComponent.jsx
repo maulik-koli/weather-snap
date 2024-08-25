@@ -1,30 +1,33 @@
-import { useRef, useState, useEffect, useContext } from 'react'
+import { useRef, useEffect, useContext } from 'react'
 
 import { ErrorFetchingContext } from '../contexts/ErrorAndFetching.jsx'
 import { WeatherContext } from '../contexts/WeatherProvider.jsx'
 
 const SearchComponent = ({ lable, setLable }) => {
-    const locationInout = useRef() 
-    const [location, setLocation] = useState('')
-
-    const { setWeatherForcast } = useContext(WeatherContext)
-    const { setError, setIsFetching } = useContext(ErrorFetchingContext)
+    const locationInput = useRef() 
+    
+    const { location, setLocation, setWeatherForcast  } = useContext(WeatherContext)
+    const { error, setError, setIsFetching } = useContext(ErrorFetchingContext)
     
     const handleSearchClick = () => {
-        setLocation(locationInout.current.value)
-        locationInout.current.value = ''
+        setLocation(locationInput.current.value)
+        locationInput.current.value = ''
         setLable('Weather Info')
     }
 
     useEffect(() => {
         setIsFetching(true)
         const sendLocation = async () => {
-            const wait = (delay) => new Promise(resolve => setTimeout(resolve, delay))
+            if(!location){
+                setError({
+                    error : "Please enter a location and try again."
+                })
+                return
+            }
 
-            await wait(2000)
             try{
+                // /dummy-data.json
                 // http://localhost:3000/weather?location=${location}
-
                 const response = await fetch(`/dummy-data.json`)
                 const data = await response.json()
                 
@@ -36,7 +39,7 @@ const SearchComponent = ({ lable, setLable }) => {
             }
             catch(error){
                 setError({
-                    message: error.message || "Could not fetch places, pleace try again latter."
+                    error: error.message || "Could not fetch data, pleace try again latter."
                 })
             }
             finally{
@@ -46,12 +49,16 @@ const SearchComponent = ({ lable, setLable }) => {
         sendLocation()
     }, [location])
 
+    const handleInfoButton = () => {
+        setLable("Weather Info")
+    }
+
     return (
         <div className='search-con'>
-            <div className='search'>
+            <div className='search' >
                 <div className="search-input">
                     <input 
-                        ref={locationInout}
+                        ref={locationInput}
                         type='text'
                         placeholder='Enter city name'
                     />
@@ -63,7 +70,12 @@ const SearchComponent = ({ lable, setLable }) => {
                     <button onClick={() => setLable('Map')}>Map</button>
                 </div>
             </div>
-            <div className='lable'>{lable}</div>
+            {location ? (
+                <div className='lable'>
+                    <p>{lable}</p>
+                    {lable !== "Weather Info" && <button onClick={handleInfoButton}>Info</button>}
+                </div>
+            ) : <div className='alt-div'></div>}
         </div>
     )
 }

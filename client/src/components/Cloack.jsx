@@ -20,9 +20,7 @@ const Cloack = () => {
         }
     }, [])
 
-    return (
-        <span className='clock'>{time}</span>
-    )
+    return <span className='clock'>{time}</span>
 }
 
 export default Cloack;
