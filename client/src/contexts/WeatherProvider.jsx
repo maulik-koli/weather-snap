@@ -5,7 +5,7 @@ import { INITIAL_WEATHER_DATA } from "../helper";
 export const WeatherContext = createContext()
 
 export const WeaTherProvider = ({ children }) => {
-    const [ weatherForcast, setWeatheForcast ] = useState(INITIAL_WEATHER_DATA)
+    const [ weatherForcast, setWeatherForcast ] = useState(INITIAL_WEATHER_DATA)
     const [ favData, setFavData ] = useState([])
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export const WeaTherProvider = ({ children }) => {
     }, [])
 
     return (
-        <WeatherContext.Provider value={{ weatherForcast , setWeatheForcast, favData, setFavData }}>
+        <WeatherContext.Provider value={{ weatherForcast , setWeatherForcast, favData, setFavData }}>
             {children}
         </WeatherContext.Provider>
     )

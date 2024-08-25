@@ -5,10 +5,10 @@ import FavLocation from './FavLocation.jsx';
 
 const SideComponents = ({ lable }) => {
     return (
-        <>
+        <div className='side-right'>
             {lable === "Weather Info" && <ForcastData />}
             {lable === "Fauvrite Locations" && <FavLocation />}
-        </>
+        </div>
     )
 }
 

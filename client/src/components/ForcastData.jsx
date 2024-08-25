@@ -11,10 +11,10 @@ const ForcastData = () => {
     const { isFetching } = useContext(ErrorFetchingContext)
 
     return (
-        <div className='side-main'>
+        <>
             {isFetching && <LoadingBlock />}
             {!isFetching && 
-                <div className="side-con">
+                <div className="side-data">
                     <div className="side-weather-data-m">
                         <div className="side-weather-data">{currentData.windSpeed}</div>
                         <div className="side-weather-data">{currentData.pressure}</div>
@@ -27,7 +27,7 @@ const ForcastData = () => {
                     </div>
                 </div>
             }
-        </div>
+        </>
     )
 }
 

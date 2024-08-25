@@ -3,6 +3,7 @@
     margin: 0;
 }
 
+/* Header */
 header {
     background-color: blueviolet;
     height: 10vh;
@@ -23,10 +24,11 @@ header {
 }
 
 .logo h1 {
-    margin: auto 10px;
+    margin: auto .5em;
 }
 
-.span-clock {
+/* Clock in header */
+.clock {
     background-color: violet;
     align-self: flex-end;
     width: 12vw;
@@ -39,50 +41,52 @@ header {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* Search and Lable Main Container */
 .search-con {
     display: flex;
     height: 12vh;
 }
 
+/* Search Sub Container */
 .search {
     background-color: red;
     width: 60vw;
     display: flex;
-    
 }
 
-.search-a{
+.search-input {
     width: 80%;
     display: flex;
     gap: 2%;
 }
 
-.search-a input {
+.search-input input {
     height: 3rem;
     margin: auto 3%;
     width: 70%;
 }
 
-.search-a button {
+.search-input button {
     height: 3rem;
     margin: auto 0;
     margin-right: 3%;
     width: 20%;
 }
 
-.search-b {
+.search-btns {
     margin: auto 0;
     margin-left: auto;
     display: flex;
 }
 
-.search-b button {
+.search-btns button {
     height: 2.8rem;
     margin-right: 1rem;
     width: 3.5rem;
 }
 
-.title {
+/* Lable Sub Container */
+.lable {
     background-color: slateblue;
     width: 40vw;
     display: flex;
@@ -90,12 +94,21 @@ header {
     align-items: center;
 }
 
+/* Main Container */
 .weather-con {
     display: flex;
 }
 
-.weather {
+/* Left Side */
+.side-left {
     background-color: darkblue;
+    width: 60vw;
+    height: 78vh;
+    display: flex;
+}
+
+/* Wather Container */
+.weather {
     width: 60vw;
     height: 78vh;
     display: grid;
@@ -103,6 +116,7 @@ header {
     grid-template-rows: 6% 27% 26% 26% 15%;
 }
 
+/* grid items common class */
 .weather-data {
     background-color: teal;
     width: fit-content;
@@ -113,6 +127,7 @@ header {
     align-items: center;
 }
 
+/* gride items perosnal classes */
 .fb-0 {
     grid-column: 2/3;
     display: flex;
@@ -159,13 +174,16 @@ header {
     margin: auto;
 }
 
-.side-main {
+/* Right Side */
+.side-right {
     background-color: crimson;
     width: 40vw;
     height: 78vh;
+    display: flex;
 }
 
-.side-con {
+/* Data Container */
+.side-data {
     width: 40vw;
     height: 78vh;
     display: flex;
@@ -189,28 +207,47 @@ header {
     margin: auto;
     width: 12rem;
 }
+ /* Fav Container */
 
-ul {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-}
-
-
-
-.for-loading {
-    background-color: darkblue;
-    width: 60vw;
-    height: 78vh;
-    display: flex;
-}
-
-.loading {
+ .side-fav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    width: 40%;
+}
+
+.side-fav ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin-top: 2rem;
+    gap: .5em;
+    width: 70%;
+}
+
+.fav-list {
+    display: flex;
+    height: 3rem;
+    background-color: antiquewhite;
+}
+
+.fav-list div {
+    background-color: blueviolet;
+    width: 80%;
+}
+
+.fav-list button {
+    margin: auto 0;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    margin-left: .5rem;
+}
+
+/* Loading Block */
+.loading {
     margin: auto;
+    display: flex;
+    background-color: azure;
     height: 30%;
+    width: 40%;
 }

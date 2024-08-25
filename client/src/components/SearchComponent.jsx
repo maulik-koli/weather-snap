@@ -7,7 +7,7 @@ const SearchComponent = ({ lable, setLable }) => {
     const locationInout = useRef() 
     const [location, setLocation] = useState('')
 
-    const { setWeatheForcast } = useContext(WeatherContext)
+    const { setWeatherForcast } = useContext(WeatherContext)
     const { setError, setIsFetching } = useContext(ErrorFetchingContext)
     
     const handleSearchClick = () => {
@@ -32,7 +32,7 @@ const SearchComponent = ({ lable, setLable }) => {
                     throw new Error("Failed to fetch data.")
                 }
     
-                setWeatheForcast(data)
+                setWeatherForcast(data)
             }
             catch(error){
                 setError({
@@ -49,7 +49,7 @@ const SearchComponent = ({ lable, setLable }) => {
     return (
         <div className='search-con'>
             <div className='search'>
-                <div className="search-a">
+                <div className="search-input">
                     <input 
                         ref={locationInout}
                         type='text'
@@ -58,12 +58,12 @@ const SearchComponent = ({ lable, setLable }) => {
                     <button onClick={handleSearchClick}>Search</button>
                 </div>
 
-                <div className="search-b">
+                <div className="search-btns">
                     <button onClick={() => setLable('Fauvrite Locations')}>Fav</button>
                     <button onClick={() => setLable('Map')}>Map</button>
                 </div>
             </div>
-            <div className='title'>{lable}</div>
+            <div className='lable'>{lable}</div>
         </div>
     )
 }

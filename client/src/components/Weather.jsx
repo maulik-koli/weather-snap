@@ -17,24 +17,26 @@ export default function Weather({ setLable }) {
   }, [favData])
 
   const addFavLocation = () => {
-    const favLocID = Math.floor(1000 + Math.random() * 9000)
-    const data = [
-      { 
-        favLocID: favLocID,
-        name : locationData.name,
-        latitude : locationData.latitude,
-        longitude : locationData.longitude,
-        place : locationData.place,
-      }
-    ]
-    
-    setFavData((prevData) => [...prevData, data])
+    const favLocID = Math.floor(1000 + Math.random() * 9000);
+    const newFavLocation = {
+      favLocID,
+      name: locationData.name,
+      lat: locationData.latitude,
+      log: locationData.longitude,
+      place: locationData.place,
+      descriptions: currentData.descriptions,
+    };
+
+    const updatedFavData = [...favData, newFavLocation];
+    setFavData(updatedFavData);
+    localStorage.setItem('locData', JSON.stringify(updatedFavData));
     setLable('Fauvrite Locations')
-  }
+  };
 
   return (
-    <>
-      {isFetching && <div className='for-loading' ><LoadingBlock /></div>}
+    <div className='side-left'>
+      {/* <LoadingBlock /> */}
+      {isFetching && <LoadingBlock /> }
       {!isFetching && 
         <div className='weather'>
           <div className='fb-0'><button onClick={addFavLocation}>#</button></div>
@@ -45,6 +47,6 @@ export default function Weather({ setLable }) {
           <div className="weather-data lo-5">LOGO</div>
         </div>
       }
-    </>
+    </div>
   )
 }
