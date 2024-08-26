@@ -5,7 +5,7 @@ import { INITIAL_WEATHER_DATA } from "../helper";
 export const WeatherContext = createContext()
 
 export const WeaTherProvider = ({ children }) => {
-    const [ location, setLocation ] = useState('')
+    const [ location, setLocation ] = useState('A4$cZ9k*R1pQ8%w')
     const [ weatherForcast, setWeatherForcast ] = useState(INITIAL_WEATHER_DATA)
     const [ favData, setFavData ] = useState([])
 

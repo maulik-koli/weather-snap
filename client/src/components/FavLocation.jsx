@@ -5,7 +5,7 @@ import { ErrorFetchingContext } from '../contexts/ErrorAndFetching'
 
 const FavLocation = () => {
     const { favData, setFavData, setWeatherForcast } = useContext(WeatherContext)
-    const { setIsFetching, setError  } = useContext(ErrorFetchingContext)
+    const { setError, setIsFetching } = useContext(ErrorFetchingContext)
 
     const handleDelete = (id) => {
         const updatedFavData = favData.filter((data) => data.favLocID !== id);
@@ -14,22 +14,30 @@ const FavLocation = () => {
     };
 
     const getDataByFavLocation = async (location) => {
+        setIsFetching(true)
+        let loc = location.toString()
+
+        if(loc === "A4$cZ9k*R1pQ8%w") return
         try{
+            if(!loc){
+                throw new Error("Selected location is not working.")
+            }
+
             // /dummy-data.json
-            let loc = location ? location : "tokyo"
             // http://localhost:3000/weather?location=${loc}
             const response = await fetch(`/dummy-data.json`)
             const data = await response.json()
             
             if(!response.ok){
-                throw new Error("Failed to fetch data.")
+                throw new Error(data.error)
             }
 
             setWeatherForcast(data)
+            setError(null)
         }
         catch(error){
             setError({
-                message: error.message || "Could not fetch places, pleace try again latter."
+                error: error.message || "Something went wrong, please try again latter."
             })
         }
         finally{

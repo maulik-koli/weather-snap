@@ -12,74 +12,109 @@ html, body {
 
 /* Header */
 header {
-    background-color: blueviolet;
+    background: linear-gradient(to right, #3a1c6d, #1f0048);
     height: 10vh;
     display: flex;
+    align-items: center;
+    padding: 0 20px;
 }
 
 .logo {
-    background-color: bisque;
+    background-color: #2a2a72;
     width: 85vw;
     display: flex;
-    gap: 10px ;
+    gap: 10px;
+    align-items: center;
 }
 
 .logo img {
     width: 60px;
-    margin: auto 20px;
     height: 60px;
 }
 
 .logo h1 {
-    margin: auto .5em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    margin: 0;
+    color: #c0c0c0;
+    font-size: 1.5rem;
 }
 
 /* Clock in header */
 .clock {
-    background-color: violet;
-    align-self: flex-end;
-    width: 12vw;
-    margin: auto;
-    height: 8vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: #fdfd96;
+    align-self: center;
+    width: auto;
+    margin-left: auto;
     font-size: 2.5rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/* Search and Lable Main Container */
+/* Overall Search Component Container */
 .search-con {
     display: flex;
     height: 12vh;
+    padding: 10px;
+    background: linear-gradient(to right, #7875ff, #1f0048);
 }
 
 /* Search Sub Container */
 .search {
-    background-color: red;
+    background-color: #3a1c6d;
     width: 60vw;
     display: flex;
+    border-radius: 8px 0 0 8px;
+    padding: 5px;
 }
 
+/* Search Input Container */
 .search-input {
     width: 80%;
     display: flex;
     gap: 2%;
 }
 
+/* Input Field */
 .search-input input {
     height: 3rem;
     margin: auto 3%;
     width: 70%;
+    padding: 0 10px;
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: #eebfff;
+    color: #1f0048;
+    font-size: larger;
 }
 
+.search-input input:focus {
+    border-color: #7875ff;
+}
+
+/* Search Button */
 .search-input button {
     height: 3rem;
     margin: auto 0;
     margin-right: 3%;
     width: 20%;
+    background-color: #da76ff;
+    color: #1f0048;
+    border: 2px solid #1f0048;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
+.search-input button:hover {
+    background-color: #1f0048;
+    color: #ffffff;
+    border-color: #7875ff;
+}
+
+/* Small Buttons */
 .search-btns {
     margin: auto 0;
     margin-left: auto;
@@ -90,45 +125,69 @@ header {
     height: 2.8rem;
     margin-right: 1rem;
     width: 3.5rem;
+    background-color: #da76ff;
+    color: #3a1c6d;
+    border: 2px solid #1f0048;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Lable Sub Container */
+.search-btns button:hover {
+    background-color: #3a1c6d; 
+    color: #ffffff;
+    border-color: #7875ff;
+}
+
+/* Label Sub Container */
 .lable {
-    background-color: slateblue;
+    background: linear-gradient(to right, #3a1c6d, #0400ff);
     width: 40vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 0 8px 8px 0;
 }
 
-/* Conditinal div to complete search component */
+/* Conditional Div */
 .alt-div {
-    background-color: red;
+    background-color: #3a1c6d;
     width: 40vw;
+    border-radius: 0 8px 8px 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Landing container */
 .landing-container {
     height: 78vh;
     width: 100%;
-    background: linear-gradient(135deg, #001f3f, #003366);
+    background: linear-gradient(135deg, #7875ff, #1f0048);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
     position: relative;
-    z-index: 1; /* Ensures the content is above other effects */
+    z-index: 1;
 }
 
 /* Text styling */
 .landing-container h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: center;
 }
 
 .landing-container p {
-    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem;
 }
 
 /* Sun effect */
@@ -137,13 +196,12 @@ header {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle, #ffff00 40%, rgba(255, 255, 0, 0) 70%);
+    background: radial-gradient(circle, #ffff00 52%, rgba(255, 255, 0, 0) 70%);
     box-shadow: 0 0 40px rgba(255, 255, 0, 0.6);
     animation: rotateSun 20s linear infinite;
     top: 10%;
     left: 10%;
 }
-
 
 @keyframes rotateSun {
     from {
@@ -154,177 +212,304 @@ header {
     }
 }
 
-@keyframes moveClouds {
-    0% {
-        transform: translateX(0) translateY(0);
-    }
-    100% {
-        transform: translateX(-100%) translateY(-100%);
-    }
-}
-
 /* Main Container */
 .weather-con {
     display: flex;
+    width: 100%;
+    height: 100%;
 }
 
 /* Left Side */
 .side-left {
-    background-color: rgb(33, 12, 171);
+    background: linear-gradient(135deg, #3a1c6d, #1f0048); /* Dark gradient for left side */
     width: 60vw;
     height: 78vh;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
 }
 
-/* Wather Container */
+/* Weather Container */
 .weather {
-    width: 60vw;
-    height: 78vh;
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 60% 40%;
-    grid-template-rows: 6% 27% 26% 26% 15%;
+    grid-template-rows: auto auto auto auto auto;
+    background: linear-gradient(135deg, #2f2cff, #1f0048); /* Unified gradient with a bit of blending */
+    gap: 1%;
+    padding: 1%;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    box-sizing: border-box;
 }
 
-/* grid items common class */
+/* Grid items common class */
 .weather-data {
-    background-color: teal;
-    width: fit-content;
-    height: min-content;
-    margin: auto 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: #f2c300;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 0.5em;
+    background: rgba(0, 0, 0, 0.5); /* Consistent with left side */
+    box-sizing: border-box;
 }
 
-/* gride items perosnal classes */
+.weather-data:hover {
+    background: rgba(0, 0, 0, 0.536);
+    color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Grid items personal classes */
 .fb-0 {
     grid-column: 2/3;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
 }
 
 .fb-0 button {
-    margin-top: 1.5rem;
-    margin-right: 2rem;
-    width: 1.8rem;
-    height: 1.8rem;
+    margin-right: .6rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
+    background: #f2c300;
+    border: none;
+    color: #1f0048;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.fb-0 button:hover {
+    background: #1f0048;
+    color: #f2c300;
+    transform: scale(1.1);
 }
 
 .cn-1 {
-    grid-row: 2/3;
-    height: 8rem;
-    width: 80%;
+    grid-row: 1 / 2;
+    font-size: 4vw;
+    color: #f2c300;
+    text-align: left;
 }
 
 .te-2 {
-    grid-row: 3/4;
-    height: 8rem;
-    width: 30%;
+    grid-row: 2 / 3;
+    font-size: 5.2vw;
+    color: #f2c300;
+    text-align: left;
 }
 
 .de-3 {
-    grid-row: 4/5;
-    height: 7rem;
-    width: 80%;
+    grid-row: 3 / 4;
+    font-size: 2vw;
+    color: #f2c300;
+    text-align: left;
 }
 
 .ti-4 {
-    grid-row: 5/6;
-    height: 4rem;
-    width: 80%;
+    grid-row: 4 / 5;
+    font-size: 1.5vw;
+    color: #f2c200a6;
+    opacity: 0.7;
+    text-align: left;
 }
 
 .lo-5 {
-    grid-row: 2/5;
-    height: 15rem;
-    width: 70%;
-    margin: auto;
+    grid-row: 2 / 5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #988229;
+    position: relative;
 }
+
+.logo1 {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+
 
 /* Right Side */
 .side-right {
-    background-color: crimson;
+    background: linear-gradient(135deg, #1f0048, #6f00ff); /* Gradual transition matching the left side */
     width: 40vw;
     height: 78vh;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    box-sizing: border-box;
 }
 
 /* Data Container */
 .side-data {
-    width: 40vw;
-    height: 78vh;
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 1em;
+    box-sizing: border-box;
 }
 
+/* Side Weather Data Column */
 .side-weather-data-m {
     display: flex;
     flex-direction: column;
     width: 50%;
-    gap: 20px;
-    padding: 20px;
+    gap: 2.5rem;
 }
 
+/* Individual Weather Data Item */
 .side-weather-data {
-    background-color: chartreuse;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for better consistency */
     padding: 10px;
-    height: 6.5rem;
+    height: 6rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: 12rem;
+    align-items: flex-start;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.3s;
+    margin: 0;
 }
 
- /* Fav Container */
- .side-fav {
+/* Title and Data Text */
+.side-weather-data span {
+    font-size: 0.8rem;
+    color: #f2c300; /* Consistent with the left side's data text */
+    opacity: 0.8;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.side-weather-data p {
+    font-size: 1.4rem;
+    color: #fff; /* Consistent text color */
+}
+
+/* Hover Effect */
+.side-weather-data:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.03);
+}
+
+/* Fav Container */
+.side-fav {
     display: flex;
     width: 40vw;
     height: 78vh;
+    background: linear-gradient(135deg, #1f0048, #6f00ff);
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: 15px;
+    overflow-y: auto;
 }
 
+/* Fav List */
 .side-fav ul {
     display: flex;
-    margin: 0 auto;
     flex-direction: column;
     list-style: none;
-    margin-top: 2rem;
-    gap: .5em;
-    width: 70%;
+    margin: 0;
+    padding: 0;
+    gap: 0.5em;
+    width: 100%;
 }
 
+/* List Items */
 .fav-list {
     display: flex;
+    align-items: center;
     height: 3rem;
-    background-color: antiquewhite;
-    cursor: auto;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    padding: 0.5em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s, transform 0.3s;
 }
 
+.fav-list:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.02);
+}
+
+/* List Item Content */
 .fav-list div {
-    background-color: blueviolet;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f2c300;
+    border-radius: 8px;
+    padding: 0.5em;
     width: 80%;
+    display: flex;
+    flex-direction: column;
 }
 
+.fav-list span {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.fav-list p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Delete Button */
 .fav-list button {
-    margin: auto 0;
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
-    margin-left: .5rem;
+    background: #f2c300;
+    border: none;
+    color: #1f0048;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+    margin-left: 0.5rem;
+}
+
+.fav-list button:hover {
+    background: #1f0048;
+    color: #f2c300;
+    transform: scale(1.1);
 }
 
 /* Map Container */
 .map-wrapper {
     position: relative;
-    width: 70%;
-    height: 70%;
+    width: 85%;
+    height: 85%;
     margin: auto;
+    background: linear-gradient(135deg, #1f0048, #6f00ff); /* Matching gradient with right side */
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
-  
+
+/* Info Bar */
 .info-bar {
     position: absolute;
-    top: 0;
+    top: 38px;
     left: 0;
     right: 0;
     background: rgba(255, 255, 255, 0.8);
@@ -332,46 +517,244 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
-  
+
+/* Map Container */
 .map-container {
     width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100% - 40px); /* Adjust height to account for info bar */
     position: absolute;
-    top: 40px;
+    top: 90px;
     left: 0;
+    border-radius: 0 0 15px 15px;
 }
-  
+
+/* Map Button */
 .map-button {
-    background-color: #007bff;
-    color: white;
+    background-color: #f2c300;
+    color: #1f0048;
     border: none;
     border-radius: 4px;
     padding: 8px 12px;
     cursor: pointer;
-}
-  
-.map-button:hover {
-    background-color: #0056b3;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-/* Loading Block */
+.map-button:hover {
+    background-color: #1f0048;
+    color: #f2c300;
+    transform: scale(1.05);
+}
+
+/* Title */
+.map-wrapper h1 {
+    text-align: center;
+    color: #f2c300;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Loading Block Container */
 .loading {
-    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.585);
+    border-radius: 15px;
+    padding: 2em;
+    color: #f2c300;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.248);
+    z-index: 1000;
     display: flex;
-    background-color: azure;
-    height: 30%;
-    width: 40%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 200px;
+    gap: 2em;
+}
+
+/* Loading Circle Container */
+.circle-container {
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1em;
+    position: relative;
+    margin-right: 4em;
+}
+
+/* Circle Spinning Animation */
+.circle-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 6px solid rgba(0, 0, 0, 0.3);
+    border-top: 6px solid #f2c300;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    
+}
+
+/* Circle Spinning Animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Loading Text */
+.loading h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+/* Loading Dot Animation */
+.loading h1::after {
+    content: '...';
+    position: absolute;
+    left: 100%;
+    top: 0;
+    font-size: 2.5rem;
+    animation: dotBlink 1.5s infinite;
+}
+
+/* Dot Blinking Animation */
+@keyframes dotBlink {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0.25;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0.25;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* Error Block Container */
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 /* Error Block */
 .error {
-    margin: auto;
     display: flex;
-    background-color: azure;
-    height: 30%;
-    width: 40%;
+    align-items: center;
+    background: rgba(255, 0, 0, 0.432);
+    border: 1px solid rgba(255, 0, 0, 0.692);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1000;
+    color: #fff;
+}
+
+/* Error Icon */
+.error-icon {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(204, 0, 0, 0.658);
+    border-radius: 50%;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Error Content */
+.error-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Error Title */
+.error-content h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #ffffff9f;
+}
+
+/* Error Description */
+.error-content p {
+    margin: 5px 0 0;
+    font-size: 1rem;
+    color: #e0e0e09a; 
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 1200px) {
+    .weather-con {
+        flex-direction: column;
+    }
+
+    .side-left, .side-right {
+        width: 100%;
+        height: auto; /* Allow dynamic height based on content */
+    }
+    
+    .side-left {
+        margin-bottom: 1em; /* Add margin between stacked sections */
+    }
+}
+
+/* Additional Media Query for Very Small Screens */
+@media (max-width: 768px) {
+    .header, .search-con, .landing-container, .weather-con, .side-left, .side-right {
+        height: auto; /* Ensure all elements have dynamic height based on content */
+    }
+
+    .weather {
+        grid-template-columns: 1fr; /* Stack grid items vertically */
+        grid-template-rows: auto; /* Adjust row heights based on content */
+    }
+    
+    .side-data {
+        flex-direction: column; /* Stack data items vertically */
+        gap: 1rem; /* Add space between stacked items */
+    }
+    
+    .side-fav {
+        height: auto; /* Allow dynamic height based on content */
+    }
+    
+    .map-wrapper {
+        width: 100%;
+        height: 50vh; /* Adjust height for better visibility on small screens */
+    }
 }

@@ -10,8 +10,8 @@ const port = 3000
 
 app.get('/weather', async (req, res) => {
     if(!req.query.location){
-        return res.send({
-            error: "Please enter a location and try again."
+        return res.status(400).send({
+            error: "Please enter a location."
         })
     }
 
@@ -19,12 +19,12 @@ app.get('/weather', async (req, res) => {
     
     geocode(location, (error, { longitude , latitude, place } = {}) => {
         if(error){
-            return res.send({ error: error })
+            return res.status(error.status).send({ error: error.message })
         }
 
         weathercode(longitude, latitude, place, (error, weatherData = {}) => {
             if(error){
-                return res.send({ error: error })
+                return res.status(error.status).send({ error: error.message })
             }
     
             res.status(200).send(weatherData)
@@ -34,8 +34,8 @@ app.get('/weather', async (req, res) => {
 
 app.get('/cords', (req, res) => {
     if(!req.query.lat || !req.query.lng){
-        return res.send({
-            error: "Requested address don't match"
+        return res.status(400).send({
+            error: "Please check cordinates you give."
         })
     }
 
@@ -44,7 +44,7 @@ app.get('/cords', (req, res) => {
     
     weathercode(lng, lat, "" , (error, weatherData = {}) => {
         if(error){
-            return res.send({ error: error })
+            return res.status(error.status).send({ error: error.message })
         }
 
         res.status(200).send(weatherData)

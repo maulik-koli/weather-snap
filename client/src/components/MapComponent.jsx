@@ -11,7 +11,25 @@ const MapComponent = () => {
     const { setError, setIsFetching } = useContext(ErrorFetchingContext)
     const { weatherForcast, setWeatherForcast } = useContext(WeatherContext)
     const { locationData } = weatherForcast
-    const [lngLat, setLngLat] = useState({ lng: locationData.longitude ? locationData.longitude : 139.6929116, lat: locationData.latitude ? locationData.latitude : 35.6889853 });
+
+    const handleSetLngLat = () => {
+        let cords = {}
+        if(
+            (!locationData.longitude || !locationData.latitude) ||
+            ((locationData.longitude === 0.0) || (locationData.latitude === 0.0))
+        ){
+            setError({
+                error: "Something went wrong, please try again latter."
+            })
+            cords = { lng: 0.0, lat: 0.0 }
+        }
+        else{
+            cords = {lng : locationData.longitude, lat : locationData.latitude}
+        }
+        return cords
+    }
+    const [lngLat, setLngLat] = useState(handleSetLngLat)
+
 
     useEffect(() => {
         mapboxgl.accessToken = 'pk.eyJ1IjoibWF1bGlrLWtvbGkiLCJhIjoiY20wNzFyOTd1MHF4NzJyczl3OWFtMWgwZCJ9.Cw3-kVqw-d0LqP_0JETRIw'
@@ -35,24 +53,22 @@ const MapComponent = () => {
 
     const sendLngLat = async () => {
         setIsFetching(true)
-        const wait = (delay) => new Promise(resolve => setTimeout(resolve, delay))
-
-        await wait(2000)
         try{
             // http://localhost:3000/cords?lat=${lngLat.lat}&lng=${lngLat.lng}
 
             const response = await fetch(`http://localhost:3000/cords?lat=${lngLat.lat}&lng=${lngLat.lng}`)
             const data = await response.json()
-            
+            console.log(data)
             if(!response.ok){
-                throw new Error("Failed to fetch data.")
+                throw new Error(data.error)
             }
 
             setWeatherForcast(data)
+            setError(null)
         }
         catch(error){
             setError({
-                message: error.message || "Could not fetch places, pleace try again latter."
+                error: error.message || "Something went wrong, please try again latter."
             })
         }
         finally{
@@ -63,12 +79,12 @@ const MapComponent = () => {
     return (
         <div className="map-wrapper">
             <h1>Map</h1>
-        <div className="info-bar">
-            <span>Longitude: {lngLat.lng}</span>
-            <span>Latitude: {lngLat.lat}</span>
-            <button className="map-button" onClick={sendLngLat}>Click</button>
-        </div>
-        <div className="map-container" ref={mapContainer} />
+            <div className="info-bar">
+                <span>Longitude: {lngLat.lng}</span>
+                <span>Latitude: {lngLat.lat}</span>
+                <button className="map-button" onClick={sendLngLat}>Click</button>
+            </div>
+            <div className="map-container" ref={mapContainer} />
         </div>
     );
 };

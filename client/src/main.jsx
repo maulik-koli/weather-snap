@@ -4,11 +4,14 @@ import App from './App.jsx'
 import './index.css'
 
 import { WeaTherProvider } from './contexts/WeatherProvider.jsx'
+import { ErrorAndFetching } from './contexts/ErrorAndFetching.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <WeaTherProvider>
-      <App />
+      <ErrorAndFetching>
+        <App />
+      </ErrorAndFetching>
     </WeaTherProvider>
   </StrictMode>,
 )

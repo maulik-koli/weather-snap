@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from 'react'
 
 import LoadingBlock from './LoadingBlock.jsx'
+import ErrorBlock from './ErrorBlock.jsx'
 import { ErrorFetchingContext } from '../contexts/ErrorAndFetching.jsx'
 import { WeatherContext } from '../contexts/WeatherProvider.jsx'
 
-export default function Weather({ setLable }) {
+const Weather = ({ setLable }) => {
   const { weatherForcast, setFavData, favData } = useContext(WeatherContext)
   const { error, isFetching } = useContext(ErrorFetchingContext)
 
@@ -37,18 +38,21 @@ export default function Weather({ setLable }) {
 
   return (
     <div className='side-left'>
-      {/* <LoadingBlock /> */}
-      {isFetching && <LoadingBlock /> }
-      {!isFetching && 
-        <div className='weather'>
-          <div className='fb-0'><button onClick={() => addFavLocation(locationData.name)}>#</button></div>
-          <div className="weather-data cn-1">{locationData.name}</div>
-          <div className="weather-data te-2">{currentData.temperature}</div>
-          <div className="weather-data de-3">{currentData.descriptions}</div>
-          <div className="weather-data ti-4">{locationData.time}</div>
-          <div className="weather-data lo-5">LOGO</div>
-        </div>
+      {isFetching ? <LoadingBlock /> : 
+        error ? <ErrorBlock /> :
+          (
+            <div className='weather'>
+              <div className='fb-0'><button onClick={() => addFavLocation(locationData.name)}>#</button></div>
+              <div className="weather-data cn-1"><p>{locationData.name}</p></div>
+              <div className="weather-data te-2"><p>{currentData.temperature}</p></div>
+              <div className="weather-data de-3"><p>{currentData.descriptions}</p></div>
+              <div className="weather-data ti-4"><p>{locationData.time}</p></div>
+              <div className="weather-data lo-5">LOGO</div>
+            </div>
+          )
       }
     </div>
   )
 }
+
+export default Weather

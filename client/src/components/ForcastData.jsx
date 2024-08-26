@@ -1,33 +1,24 @@
 import React, { useContext } from 'react'
 
 import { WeatherContext } from '../contexts/WeatherProvider'
-import { ErrorFetchingContext } from '../contexts/ErrorAndFetching'
-import LoadingBlock from './LoadingBlock'
 
 const ForcastData = () => {
     const { weatherForcast } = useContext(WeatherContext)
     const { currentData } = weatherForcast
 
-    const { isFetching } = useContext(ErrorFetchingContext)
-
     return (
-        <>
-            {isFetching && <LoadingBlock />}
-            {!isFetching && 
-                <div className="side-data">
-                    <div className="side-weather-data-m">
-                        <div className="side-weather-data">{currentData.windSpeed}</div>
-                        <div className="side-weather-data">{currentData.pressure}</div>
-                        <div className="side-weather-data">{currentData.uv}</div>
-                    </div>
-                    <div className="side-weather-data-m">
-                        <div className="side-weather-data">{currentData.humidity}</div>
-                        <div className="side-weather-data">{currentData.feelsLike}</div>
-                        <div className="side-weather-data">{currentData.visibility}</div>
-                    </div>
-                </div>
-            }
-        </>
+        <div className="side-data">
+            <div className="side-weather-data-m">
+                <div className="side-weather-data"><span>Wind Speed</span><p>{currentData.windSpeed}</p></div>
+                <div className="side-weather-data"><span>Pressure</span><p>{currentData.pressure}</p></div>
+                <div className="side-weather-data"><span>UV</span><p>{currentData.uv}</p></div>
+            </div>
+            <div className="side-weather-data-m">
+                <div className="side-weather-data"><span>Humidity</span><p>{currentData.humidity}</p></div>
+                <div className="side-weather-data"><span>Feels Like</span><p>{currentData.feelsLike}</p></div>
+                <div className="side-weather-data"><span>Visibility</span><p>{currentData.visibility}</p></div>
+            </div>
+        </div>
     )
 }
 

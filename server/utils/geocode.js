@@ -7,10 +7,16 @@ const geocode = (location, callback) => {
 
     request({ url : mapURL, json : true }, (error, { body } = {}) => {
         if(error){
-            callback("Internet connetion is not connected", undefined)
+            callback({
+                message : "Network error, please check your internet connection.",
+                status : 404
+            }, undefined)
         }
         else if(body.features === 0){
-            callback("Unable to find location", undefined)
+            callback({
+                message : "Unable to find location, please check entered location",
+                status : 400
+            }, undefined)
         }
         else{
             const mapData = {

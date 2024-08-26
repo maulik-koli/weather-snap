@@ -6,13 +6,19 @@ const weathercode = (longitude, latitude, place = "", callback) =>{
 
     request({ url : weatherURL, json : true }, (error, { body } = {}) =>{
         if(error){
-            callback("Internet connetion is not connected", undefined)
+            callback({
+                message : "Network error, please check your internet connection.",
+                status : 404
+            }, undefined)
         }
         else if(body.error){
-            callback("Uable to find location", undefined)
+            callback({
+                message : "Unable to find location, please check entered location",
+                status : 400
+            }, undefined)
         }
         else{
-            weatherData = {
+            const weatherData = {
                 locationData : {
                     name : body.location.name,
                     latitude,

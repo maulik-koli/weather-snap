@@ -10,7 +10,8 @@ const SearchComponent = ({ lable, setLable }) => {
     const { error, setError, setIsFetching } = useContext(ErrorFetchingContext)
     
     const handleSearchClick = () => {
-        setLocation(locationInput.current.value)
+        const loc = (locationInput.current.value).toString()
+        setLocation(loc)
         locationInput.current.value = ''
         setLable('Weather Info')
     }
@@ -18,28 +19,27 @@ const SearchComponent = ({ lable, setLable }) => {
     useEffect(() => {
         setIsFetching(true)
         const sendLocation = async () => {
-            if(!location){
-                setError({
-                    error : "Please enter a location and try again."
-                })
-                return
-            }
-
+            if(location === "A4$cZ9k*R1pQ8%w") return
             try{
+                if(!location){
+                    throw new Error("Please enter a location.")
+                }
+
                 // /dummy-data.json
                 // http://localhost:3000/weather?location=${location}
                 const response = await fetch(`/dummy-data.json`)
                 const data = await response.json()
-                
+
                 if(!response.ok){
-                    throw new Error("Failed to fetch data.")
+                    throw new Error(data.error)
                 }
     
                 setWeatherForcast(data)
+                setError(null)
             }
             catch(error){
                 setError({
-                    error: error.message || "Could not fetch data, pleace try again latter."
+                    error: error.message || "Something went wrong, please try again latter."
                 })
             }
             finally{
@@ -52,6 +52,8 @@ const SearchComponent = ({ lable, setLable }) => {
     const handleInfoButton = () => {
         setLable("Weather Info")
     }
+
+    console.log(error)
 
     return (
         <div className='search-con'>
@@ -66,8 +68,14 @@ const SearchComponent = ({ lable, setLable }) => {
                 </div>
 
                 <div className="search-btns">
-                    <button onClick={() => setLable('Fauvrite Locations')}>Fav</button>
-                    <button onClick={() => setLable('Map')}>Map</button>
+                    <button 
+                        onClick={() => setLable('Fauvrite Locations')}
+                        disabled={(location === 'A4$cZ9k*R1pQ8%w' || error) ? true : false }
+                    >Fav</button>
+                    <button
+                        onClick={() => setLable('Map')}
+                        disabled={(location === 'A4$cZ9k*R1pQ8%w' || error) ? true : false }
+                    >Map</button>
                 </div>
             </div>
             {location ? (

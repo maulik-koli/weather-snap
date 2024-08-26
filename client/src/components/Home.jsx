@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import ErrorBlock from './ErrorBlock';
+import { ErrorFetchingContext } from '../contexts/ErrorAndFetching';
+import LoadingBlock from './LoadingBlock';
 
 const Home = () => {
+  const { error } = useContext(ErrorFetchingContext)
+
   return (
     <div className="landing-container">
-        <div className="sun"></div>
-        <h1>Welcome to WeatherApp</h1>
-        <p>Your go-to weather forecast.</p>
+      {error ? <ErrorBlock /> : 
+      (
+        <>
+          <div className="sun"></div>
+          <h1>Welcome to WeatherSnap</h1>
+          <p>Your go-to weather forecast.</p>
+        </>
+      )}
     </div>
   )
 }

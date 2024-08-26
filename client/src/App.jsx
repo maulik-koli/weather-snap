@@ -5,6 +5,7 @@ import SearchComponent from './components/SearchComponent.jsx'
 import Weather from './components/Weather.jsx'
 import SideComponents from './components/SideComponents.jsx'
 import Home from './components/Home.jsx'
+
 import { WeatherContext } from './contexts/WeatherProvider.jsx'
 import { ErrorAndFetching } from './contexts/ErrorAndFetching.jsx'
 
@@ -17,8 +18,8 @@ const App = () => {
       <Header />
         <main>
           <SearchComponent lable={sideState} setLable={setSideState} />
-          {location === '' ? <Home />
-            :  (
+          {location === 'A4$cZ9k*R1pQ8%w' || location === ''  ? <Home />
+            : (
               <div className='weather-con'>
                 <Weather setLable={setSideState} />
                 <SideComponents lable={sideState} />
