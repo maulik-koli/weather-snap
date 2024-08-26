@@ -12,7 +12,7 @@ const geocode = (location, callback) => {
                 status : 404
             }, undefined)
         }
-        else if(body.features === 0){
+        else if(body.features.length === 0){
             callback({
                 message : "Unable to find location, please check entered location",
                 status : 400

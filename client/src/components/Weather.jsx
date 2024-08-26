@@ -16,6 +16,7 @@ const Weather = ({ setLable }) => {
   }, [favData])
 
   const addFavLocation = (name) => {
+    if(name === '') return
     const exist = favData.some(data => data.name === name)
 
     if(!exist){

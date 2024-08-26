@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ErrorFetchingContext } from '../contexts/ErrorAndFetching.jsx';
 
 const ErrorBlock = () => {
-  const { error } = useContext(ErrorFetchingContext);
+  const { error, setError } = useContext(ErrorFetchingContext);
 
   return (
     <div className='error-container'>
@@ -11,6 +11,7 @@ const ErrorBlock = () => {
         <div className='error-content'>
           <h1>Error</h1>
           <p>{error.error}</p>
+          <button onClick={() => setError(null)}>Okay</button>
         </div>
       </div>
     </div>

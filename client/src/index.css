@@ -145,11 +145,25 @@ header {
     background: linear-gradient(to right, #3a1c6d, #0400ff);
     width: 40vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
     color: #ffffff;
     padding: 10px;
     border-radius: 0 8px 8px 0;
+    background-color: black;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.lable button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 30%;
+    background-color: #090797;
+    color: darkgrey;
+}
+
+.lable button:hover {
+    background-color: #010058;
+    color: rgb(255, 254, 254);
 }
 
 /* Conditional Div */
@@ -221,7 +235,7 @@ header {
 
 /* Left Side */
 .side-left {
-    background: linear-gradient(135deg, #3a1c6d, #1f0048); /* Dark gradient for left side */
+    background: linear-gradient(135deg, #3a1c6d, #1f0048);
     width: 60vw;
     height: 78vh;
     display: flex;
@@ -239,7 +253,7 @@ header {
     display: grid;
     grid-template-columns: 60% 40%;
     grid-template-rows: auto auto auto auto auto;
-    background: linear-gradient(135deg, #2f2cff, #1f0048); /* Unified gradient with a bit of blending */
+    background: linear-gradient(135deg, #2f2cff, #1f0048);
     gap: 1%;
     padding: 1%;
     border-radius: 15px 15px 0 0;
@@ -257,7 +271,7 @@ header {
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     padding: 0.5em;
-    background: rgba(0, 0, 0, 0.5); /* Consistent with left side */
+    background: rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
 }
 
@@ -342,11 +356,9 @@ header {
     object-fit: contain;
 }
 
-
-
 /* Right Side */
 .side-right {
-    background: linear-gradient(135deg, #1f0048, #6f00ff); /* Gradual transition matching the left side */
+    background: linear-gradient(135deg, #1f0048, #6f00ff);
     width: 40vw;
     height: 78vh;
     display: flex;
@@ -377,7 +389,7 @@ header {
 
 /* Individual Weather Data Item */
 .side-weather-data {
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for better consistency */
+    background: rgba(0, 0, 0, 0.6);
     padding: 10px;
     height: 6rem;
     display: flex;
@@ -394,7 +406,7 @@ header {
 /* Title and Data Text */
 .side-weather-data span {
     font-size: 0.8rem;
-    color: #f2c300; /* Consistent with the left side's data text */
+    color: #f2c300;
     opacity: 0.8;
     font-weight: 600;
     margin-bottom: 0.4rem;
@@ -402,7 +414,7 @@ header {
 
 .side-weather-data p {
     font-size: 1.4rem;
-    color: #fff; /* Consistent text color */
+    color: #fff;
 }
 
 /* Hover Effect */
@@ -421,6 +433,13 @@ header {
     box-sizing: border-box;
     border-radius: 15px;
     overflow-y: auto;
+}
+
+.side-fav p {
+    color: rgba(255, 255, 255, 0.773);
+    font-size: x-large;
+    align-self: center;
+    margin: auto;
 }
 
 /* Fav List */
@@ -498,7 +517,7 @@ header {
     width: 85%;
     height: 85%;
     margin: auto;
-    background: linear-gradient(135deg, #1f0048, #6f00ff); /* Matching gradient with right side */
+    background: linear-gradient(135deg, #1f0048, #6f00ff);
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     overflow: hidden;
@@ -527,7 +546,7 @@ header {
 /* Map Container */
 .map-container {
     width: 100%;
-    height: calc(100% - 40px); /* Adjust height to account for info bar */
+    height: calc(100% - 40px);
     position: absolute;
     top: 90px;
     left: 0;
@@ -701,6 +720,7 @@ header {
 .error-content {
     display: flex;
     flex-direction: column;
+    gap: .5em;
 }
 
 /* Error Title */
@@ -708,6 +728,17 @@ header {
     margin: 0;
     font-size: 2rem;
     color: #ffffff9f;
+}
+
+.error-content button {
+    background-color: rgb(201, 53, 53);
+    border-radius: 8px;
+    color: #bdbdbd;
+}
+
+.error-content button:hover {
+    background-color: rgb(142, 0, 0);
+    color: white;
 }
 
 /* Error Description */
@@ -725,36 +756,36 @@ header {
 
     .side-left, .side-right {
         width: 100%;
-        height: auto; /* Allow dynamic height based on content */
+        height: auto;
     }
     
     .side-left {
-        margin-bottom: 1em; /* Add margin between stacked sections */
+        margin-bottom: 1em;
     }
 }
 
 /* Additional Media Query for Very Small Screens */
 @media (max-width: 768px) {
     .header, .search-con, .landing-container, .weather-con, .side-left, .side-right {
-        height: auto; /* Ensure all elements have dynamic height based on content */
+        height: auto;
     }
 
     .weather {
-        grid-template-columns: 1fr; /* Stack grid items vertically */
-        grid-template-rows: auto; /* Adjust row heights based on content */
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
     }
     
     .side-data {
-        flex-direction: column; /* Stack data items vertically */
-        gap: 1rem; /* Add space between stacked items */
+        flex-direction: column;
+        gap: 1rem;
     }
     
     .side-fav {
-        height: auto; /* Allow dynamic height based on content */
+        height: auto;
     }
     
     .map-wrapper {
         width: 100%;
-        height: 50vh; /* Adjust height for better visibility on small screens */
+        height: 50vh;
     }
 }

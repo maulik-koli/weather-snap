@@ -15,7 +15,7 @@ app.get('/weather', async (req, res) => {
         })
     }
 
-    const location = req.query.location
+    const location = req.query.location.toString()
     
     geocode(location, (error, { longitude , latitude, place } = {}) => {
         if(error){
@@ -39,8 +39,8 @@ app.get('/cords', (req, res) => {
         })
     }
 
-    const lng = req.query.lng
-    const lat = req.query.lat
+    const lng = req.query.lng.toString()
+    const lat = req.query.lat.toString()
     
     weathercode(lng, lat, "" , (error, weatherData = {}) => {
         if(error){

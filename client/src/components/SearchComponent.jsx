@@ -21,13 +21,13 @@ const SearchComponent = ({ lable, setLable }) => {
         const sendLocation = async () => {
             if(location === "A4$cZ9k*R1pQ8%w") return
             try{
-                if(!location){
+                if(!location || location === ''){
                     throw new Error("Please enter a location.")
                 }
 
                 // /dummy-data.json
                 // http://localhost:3000/weather?location=${location}
-                const response = await fetch(`/dummy-data.json`)
+                const response = await fetch(`http://localhost:3000/weather?location=${location}`)
                 const data = await response.json()
 
                 if(!response.ok){
@@ -52,8 +52,6 @@ const SearchComponent = ({ lable, setLable }) => {
     const handleInfoButton = () => {
         setLable("Weather Info")
     }
-
-    console.log(error)
 
     return (
         <div className='search-con'>
@@ -80,7 +78,6 @@ const SearchComponent = ({ lable, setLable }) => {
             </div>
             {location ? (
                 <div className='lable'>
-                    <p>{lable}</p>
                     {lable !== "Weather Info" && <button onClick={handleInfoButton}>Info</button>}
                 </div>
             ) : <div className='alt-div'></div>}

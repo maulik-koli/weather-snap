@@ -19,13 +19,13 @@ const FavLocation = () => {
 
         if(loc === "A4$cZ9k*R1pQ8%w") return
         try{
-            if(!loc){
+            if(!loc || loc === ''){
                 throw new Error("Selected location is not working.")
             }
 
             // /dummy-data.json
             // http://localhost:3000/weather?location=${loc}
-            const response = await fetch(`/dummy-data.json`)
+            const response = await fetch(`http://localhost:3000/weather?location=${loc}`)
             const data = await response.json()
             
             if(!response.ok){
@@ -48,15 +48,17 @@ const FavLocation = () => {
     return (
         <div className='side-fav'>
             <ul>
-                {favData.map((data) => (
-                    <li key={data.favLocID} className="fav-list">
-                        <div onClick={() => getDataByFavLocation(data.name)}>
-                            <span>{data.name}</span>
-                            <p>{data.descriptions}</p>
-                        </div>
-                        <button onClick={() => handleDelete(data.favLocID)}>Del</button>
-                    </li>
-                ))}
+                {favData.length === 0 ? <p>You haven't add any favrotites yet.</p> :
+                    favData.map((data) => (
+                        <li key={data.favLocID} className="fav-list">
+                            <div onClick={() => getDataByFavLocation(data.name)}>
+                                <span>{data.name}</span>
+                                <p>{data.descriptions}</p>
+                            </div>
+                            <button onClick={() => handleDelete(data.favLocID)}>Del</button>
+                        </li>
+                    ))
+                }
             </ul>
         </div>
     )

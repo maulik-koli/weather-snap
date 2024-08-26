@@ -18,7 +18,7 @@ const App = () => {
       <Header />
         <main>
           <SearchComponent lable={sideState} setLable={setSideState} />
-          {location === 'A4$cZ9k*R1pQ8%w' || location === ''  ? <Home />
+          {(location === 'A4$cZ9k*R1pQ8%w' || location === '') ? <Home />
             : (
               <div className='weather-con'>
                 <Weather setLable={setSideState} />
